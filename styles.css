@@ -1,0 +1,29 @@
+.notification {
+    animation: slideIn 0.3s ease-out;
+    font-family: 'Inter', sans-serif;
+}
+
+.notification.error {
+    background-color: #faf5ff;
+    color: #581c87;
+    border: 1px solid #8b5cf6;
+}
+
+.hover-row {
+    transition: background-color 0.2s ease;
+}
+
+.hover-row:hover {
+    background-color: #faf5ff;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
