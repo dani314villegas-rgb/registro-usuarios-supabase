@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const apellidoInput = document.getElementById('apellido');
     const cedulaInput = document.getElementById('cedula');
     const edadInput = document.getElementById('edad');
+    const telefonoInput = document.getElementById('telefono');
+    const estadoInput = document.getElementById('estado');
 
     // Notification system (toast)
     function showNotification(message, type = 'info') {
@@ -105,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td class="px-4 py-2 text-sm">${record.nombre}</td>
                     <td class="px-4 py-2 text-sm">${record.apellido}</td>
                     <td class="px-4 py-2 text-sm">${record.edad}</td>
+                    <td class="px-4 py-2 text-sm">${record.telefono}</td>
+                    <td class="px-4 py-2 text-sm">${record.estado}</td>
                     <td class="px-4 py-2 text-sm space-x-2">
                         <button class="btn-edit btn-purple bg-purple-500 hover:bg-purple-600 text-xs px-2 py-1 rounded" data-id="${record.id}" title="Editar">
                             <i class="fas fa-edit"></i>
@@ -150,9 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const apellido = apellidoInput.value.trim();
         const cedula = cedulaInput.value.trim();
         const edadStr = edadInput.value.trim();
+        const telefono = telefonoInput.value.trim();
+        const estado = estadoInput.value.trim();
 
         // Validation
-        if (!nombre || !apellido || !cedula || !edadStr) {
+        if (!nombre || !apellido || !cedula || !edadStr || !telefono || !estado) {
             showNotification('Por favor, complete todos los campos.', 'error');
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-save mr-2"></i> Guardar Registro';
@@ -171,7 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
             nombre,
             apellido,
             cedula,
-            edad
+            edad,
+            telefono,
+            estado
         };
 
         try {
@@ -225,6 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 apellidoInput.value = data.apellido;
                 cedulaInput.value = data.cedula;
                 edadInput.value = data.edad;
+                telefonoInput.value = data.telefono;
+                estadoInput.value = data.estado;
                 // Change submit button to indicate update
                 submitBtn.innerHTML = '<i class="fas fa-save mr-2"></i> Actualizar';
                 submitBtn.dataset.action = 'update';
